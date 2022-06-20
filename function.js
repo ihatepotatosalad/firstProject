@@ -1,3 +1,4 @@
+//declaration for the buttons
 let aPick = document.getElementById('a')
 let bPick = document.getElementById('b')
 let cPick = document.getElementById('c')
@@ -25,17 +26,120 @@ let xPick = document.getElementById('x')
 let yPick = document.getElementById('y')
 let zPick = document.getElementById('z')
 const letterArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+function getUserChoice(userInput) {
+
+
+
+    console.log(userInput)
+
+
+
+}
 function main() {
-    rockChoice.addEventListener('click', function () {
-        getUserChoice('rock')
+    aPick.addEventListener('click', function () {
+        getUserChoice('a')
 
     })
-    paperChoice.addEventListener('click', function () {
-        getUserChoice('paper')
+    bPick.addEventListener('click', function () {
+        getUserChoice('b')
 
     })
-    scissorsChoice.addEventListener('click', function () {
-        getUserChoice('scissors')
+    cPick.addEventListener('click', function () {
+        getUserChoice('c')
+
+    })
+    dPick.addEventListener('click', function () {
+        getUserChoice('d')
+
+    })
+    ePick.addEventListener('click', function () {
+        getUserChoice('e')
+
+    })
+    fPick.addEventListener('click', function () {
+        getUserChoice('f')
+
+    })
+    gPick.addEventListener('click', function () {
+        getUserChoice('g')
+
+    })
+    hPick.addEventListener('click', function () {
+        getUserChoice('h')
+
+    })
+    iPick.addEventListener('click', function () {
+        getUserChoice('i')
+
+    })
+    jPick.addEventListener('click', function () {
+        getUserChoice('j')
+
+    })
+    kPick.addEventListener('click', function () {
+        getUserChoice('k')
+
+    })
+    lPick.addEventListener('click', function () {
+        getUserChoice('l')
+
+    })
+    mPick.addEventListener('click', function () {
+        getUserChoice('m')
+
+    })
+    nPick.addEventListener('click', function () {
+        getUserChoice('n')
+
+    })
+    oPick.addEventListener('click', function () {
+        getUserChoice('o')
+
+    })
+    pPick.addEventListener('click', function () {
+        getUserChoice('p')
+
+    })
+    qPick.addEventListener('click', function () {
+        getUserChoice('q')
+
+    })
+    rPick.addEventListener('click', function () {
+        getUserChoice('r')
+
+    })
+    sPick.addEventListener('click', function () {
+        getUserChoice('s')
+
+    })
+    tPick.addEventListener('click', function () {
+        getUserChoice('t')
+
+    })
+    uPick.addEventListener('click', function () {
+        getUserChoice('u')
+
+    })
+    vPick.addEventListener('click', function () {
+        getUserChoice('v')
+
+    })
+    wPick.addEventListener('click', function () {
+        getUserChoice('w')
+
+    })
+    xPick.addEventListener('click', function () {
+        getUserChoice('x')
+
+    })
+    yPick.addEventListener('click', function () {
+        getUserChoice('y')
+
+    })
+    zPick.addEventListener('click', function () {
+        getUserChoice('z')
 
     })
 }
+main()
