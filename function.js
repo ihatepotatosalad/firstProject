@@ -25,7 +25,10 @@ let wPick = document.getElementById('w')
 let xPick = document.getElementById('x')
 let yPick = document.getElementById('y')
 let zPick = document.getElementById('z')
+//word bank declarations//
+let wordBank = 'bigwords'
 const letterArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+//this function will cycle through the word to check the letters to check for a match
 
 function getUserChoice(userInput) {
 
@@ -39,11 +42,12 @@ function getUserChoice(userInput) {
 function main() {
     aPick.addEventListener('click', function () {
         getUserChoice('a')
+        check()
 
     })
     bPick.addEventListener('click', function () {
         getUserChoice('b')
-
+        check()
     })
     cPick.addEventListener('click', function () {
         getUserChoice('c')
@@ -71,7 +75,7 @@ function main() {
     })
     iPick.addEventListener('click', function () {
         getUserChoice('i')
-
+        check()
     })
     jPick.addEventListener('click', function () {
         getUserChoice('j')
@@ -141,5 +145,16 @@ function main() {
         getUserChoice('z')
 
     })
+}
+//this function checks to see if the selected letter matches the letter in the array of the word using a for function
+function check() {
+    for (i = 0; i < wordBank.length; i++) {
+        if (wordBank[i] === getUserChoice) {
+            console.log('match')
+        }
+        else {
+            console.log('no match')
+        }
+    }
 }
 main()
