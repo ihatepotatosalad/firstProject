@@ -25,136 +25,41 @@ let wPick = document.getElementById('w')
 let xPick = document.getElementById('x')
 let yPick = document.getElementById('y')
 let zPick = document.getElementById('z')
+let selectionDiv = document.getElementById('buttonDiv')
+let wordStorageDiv = document.getElementById('wordStore')
+let letterStorageList = document.getElementsByClassName('letterStore')
+let test1 = document.getElementById('test')
 //word bank declarations//
 let wordBank = 'bigwords'
 const letterArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 //this function will cycle through the word to check the letters to check for a match
 
-function getUserChoice(userInput) {
+selectionDiv.addEventListener('click', function (e) {
+    check(e.target.id);
+    // console.log(e.target.id);
+})
+
+function getUserChoice(e) {
 
 
 
-    console.log(userInput)
 
 
 
-}
-function main() {
-    aPick.addEventListener('click', function () {
-        getUserChoice('a')
-        check()
-
-    })
-    bPick.addEventListener('click', function () {
-        getUserChoice('b')
-        check()
-    })
-    cPick.addEventListener('click', function () {
-        getUserChoice('c')
-
-    })
-    dPick.addEventListener('click', function () {
-        getUserChoice('d')
-
-    })
-    ePick.addEventListener('click', function () {
-        getUserChoice('e')
-
-    })
-    fPick.addEventListener('click', function () {
-        getUserChoice('f')
-
-    })
-    gPick.addEventListener('click', function () {
-        getUserChoice('g')
-
-    })
-    hPick.addEventListener('click', function () {
-        getUserChoice('h')
-
-    })
-    iPick.addEventListener('click', function () {
-        getUserChoice('i')
-        check()
-    })
-    jPick.addEventListener('click', function () {
-        getUserChoice('j')
-
-    })
-    kPick.addEventListener('click', function () {
-        getUserChoice('k')
-
-    })
-    lPick.addEventListener('click', function () {
-        getUserChoice('l')
-
-    })
-    mPick.addEventListener('click', function () {
-        getUserChoice('m')
-
-    })
-    nPick.addEventListener('click', function () {
-        getUserChoice('n')
-
-    })
-    oPick.addEventListener('click', function () {
-        getUserChoice('o')
-
-    })
-    pPick.addEventListener('click', function () {
-        getUserChoice('p')
-
-    })
-    qPick.addEventListener('click', function () {
-        getUserChoice('q')
-
-    })
-    rPick.addEventListener('click', function () {
-        getUserChoice('r')
-
-    })
-    sPick.addEventListener('click', function () {
-        getUserChoice('s')
-
-    })
-    tPick.addEventListener('click', function () {
-        getUserChoice('t')
-
-    })
-    uPick.addEventListener('click', function () {
-        getUserChoice('u')
-
-    })
-    vPick.addEventListener('click', function () {
-        getUserChoice('v')
-
-    })
-    wPick.addEventListener('click', function () {
-        getUserChoice('w')
-
-    })
-    xPick.addEventListener('click', function () {
-        getUserChoice('x')
-
-    })
-    yPick.addEventListener('click', function () {
-        getUserChoice('y')
-
-    })
-    zPick.addEventListener('click', function () {
-        getUserChoice('z')
-
-    })
 }
 //this function checks to see if the selected letter matches the letter in the array of the word using a for function
-function check() {
+function check(userSelection) {
+    console.log(userSelection, 'line 156', wordBank)
     for (i = 0; i < wordBank.length; i++) {
-        if (wordBank[i] === getUserChoice) {
+        console.log(wordBank[i], userSelection, 'line 158')
+        if (wordBank[i] === userSelection) {
+            test1.textContent = wordBank[i]
             console.log('match')
         }
         else {
-            console.log('no match')
+            console.log('no match found')
+
         }
     }
 }
-main()
+// main()
