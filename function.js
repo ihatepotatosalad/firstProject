@@ -25,10 +25,15 @@ let wPick = document.getElementById('w')
 let xPick = document.getElementById('x')
 let yPick = document.getElementById('y')
 let zPick = document.getElementById('z')
+let livesCounter = 6
+
+// let node = document.createTextNode('_')
 let selectionDiv = document.getElementById('buttonDiv')
 let wordStorageDiv = document.getElementById('wordStore')
 let letterStorageList = document.getElementsByClassName('letterStore')
-let test1 = document.getElementById('test')
+
+let blankLetters = document.createElement('ul');
+
 //word bank declarations//
 let wordBank = 'bigwords'
 const letterArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -41,25 +46,53 @@ selectionDiv.addEventListener('click', function (e) {
 
 function getUserChoice(e) {
 
+}
+function changeLetter() {
+    for (i = 0; i < wordBank.length; i++) {
 
+    }
 
+}
+function newWord() {
 
+    for (i = 0; i < wordBank.length; i++) {
 
+        let moreText = document.createElement('li')
+        // node = document.createTextNode(blankLine)
+        moreText.textContent = '_';
+        moreText.setAttribute('class', 'hiddenLetter');
+        console.log('line 54')
+        blankLetters.append(moreText);
+        // moreText.appendChild(node)
+        wordStorageDiv.append(blankLetters)
+
+    }
 
 }
 //this function checks to see if the selected letter matches the letter in the array of the word using a for function
 function check(userSelection) {
-    console.log(userSelection, 'line 156', wordBank)
+    let hiddenLetters = document.getElementsByClassName('hiddenLetter');
+    // console.log(hiddenLetters);
+
     for (i = 0; i < wordBank.length; i++) {
+        // for (j = 0; j < wordStorageDiv.length; j++) {
+        //     console.log('line 55 works')
+        // }
+
         console.log(wordBank[i], userSelection, 'line 158')
         if (wordBank[i] === userSelection) {
-            test1.textContent = wordBank[i]
+            hiddenLetters[i].textContent = userSelection;
+            // node = wordBank[i]
+            // console.
+
             console.log('match')
         }
         else {
+
             console.log('no match found')
 
         }
     }
 }
-// main()
+// console.log(node)
+newWord()
