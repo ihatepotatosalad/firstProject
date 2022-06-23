@@ -44,7 +44,7 @@ const letterArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
 selectionDiv.addEventListener('click', function (e) {
     check(e.target.id);
     // console.log(e.target.id);
-    livesDropCount()
+    // livesDropCount()
 
 })
 
@@ -56,7 +56,7 @@ function livesDropCount() {
         livesCounter--
         rulesLine.textContent = `Rules: try to guess the word with limited tries you have only ${livesCounter} lives`;
     } else {
-        livesCounter++
+
         rulesLine.textContent = `Rules: try to guess the word with limited tries you have only ${livesCounter} lives`;
     }
 }
@@ -94,14 +94,17 @@ function check(userSelection) {
             // console.
 
             console.log('match')
-            counter++
+
         }
         else {
-            counter--
+
             console.log('no match found')
 
 
         }
+        // if (hiddenLetters[i] != userSelection) {
+        //     counter--
+        // }
     }
 }
 
