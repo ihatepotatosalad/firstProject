@@ -25,8 +25,10 @@ let wPick = document.getElementById('w')
 let xPick = document.getElementById('x')
 let yPick = document.getElementById('y')
 let zPick = document.getElementById('z')
+let counter = 0
+let rulesLine = document.getElementById('rules')
 let livesCounter = 6
-
+rulesLine.textContent = `Rules: try to guess the word with limited tries you have only ${livesCounter} lives`;
 // let node = document.createTextNode('_')
 let selectionDiv = document.getElementById('buttonDiv')
 let wordStorageDiv = document.getElementById('wordStore')
@@ -42,17 +44,23 @@ const letterArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
 selectionDiv.addEventListener('click', function (e) {
     check(e.target.id);
     // console.log(e.target.id);
+    livesDropCount()
+
 })
 
 function getUserChoice(e) {
 
 }
-function changeLetter() {
-    for (i = 0; i < wordBank.length; i++) {
-
+function livesDropCount() {
+    if (counter--) {
+        livesCounter--
+        rulesLine.textContent = `Rules: try to guess the word with limited tries you have only ${livesCounter} lives`;
+    } else {
+        livesCounter++
+        rulesLine.textContent = `Rules: try to guess the word with limited tries you have only ${livesCounter} lives`;
     }
-
 }
+
 function newWord() {
 
     for (i = 0; i < wordBank.length; i++) {
@@ -86,13 +94,15 @@ function check(userSelection) {
             // console.
 
             console.log('match')
+            counter++
         }
         else {
-
+            counter--
             console.log('no match found')
+
 
         }
     }
 }
-// console.log(node)
+
 newWord()
