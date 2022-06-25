@@ -61,6 +61,7 @@ function livesDropCount() {
     }
 }
 
+
 function newWord() {
 
     for (i = 0; i < wordBank.length; i++) {
@@ -79,6 +80,7 @@ function newWord() {
 }
 //this function checks to see if the selected letter matches the letter in the array of the word using a for function
 function check(userSelection) {
+    let foundALetter = false
     let hiddenLetters = document.getElementsByClassName('hiddenLetter');
     // console.log(hiddenLetters);
 
@@ -88,11 +90,11 @@ function check(userSelection) {
         // }
 
         console.log(wordBank[i], userSelection, 'line 158')
-        if (wordBank[i] === userSelection) {
+        if (wordBank[i].includes(userSelection)) {
             hiddenLetters[i].textContent = userSelection;
             // node = wordBank[i]
             // console.
-
+            foundALetter = true
             console.log('match')
 
         }
@@ -102,9 +104,15 @@ function check(userSelection) {
 
 
         }
-        // if (hiddenLetters[i] != userSelection) {
-        //     counter--
-        // }
+
+
+    }
+    if (foundALetter) {
+        console.log('add 1')
+    }
+    else {
+        livesDropCount()
+        counter--
     }
 }
 
