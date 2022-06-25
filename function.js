@@ -25,7 +25,12 @@ let wPick = document.getElementById('w')
 let xPick = document.getElementById('x')
 let yPick = document.getElementById('y')
 let zPick = document.getElementById('z')
+let combinedHiddenLetters = '';
+
+let checkBtn = document.getElementById('checkWord')
+let hintsDiv = document.getElementById('hints')
 let gameOverScreen = document.createElement('h1')
+let youWinScreen = document.createElement('h1')
 let imgVarDiv = document.getElementById('imgDiv')
 let counter = 0
 let rulesLine = document.getElementById('rules')
@@ -41,7 +46,7 @@ let blankLetters = document.createElement('ul');
 let newWordBtn = document.getElementById('nextWord')
 
 //word bank declarations//
-let wordBank = 'bigwords'
+let wordBank = 'tea'
 let testBank = ['bedroom', 'entertainment', 'computer', 'fish', 'anticipate']
 let currentWord = []
 const letterArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -53,9 +58,13 @@ resetBtn.addEventListener('click', function (e) {
     }
     livesCounter = 6
     rulesLine.textContent = `Rules: try to guess the word with limited tries you have only ${livesCounter} lives`;
+    youWinScreen.remove()
     gameOverScreen.remove()
-    wordBank = 'bigwords'
-    testBank = ['bedroom', 'entertainment', 'computer', 'fish', 'anticipate']
+    wordBank = testBank[Math.floor(Math.random() * testBank.length)];
+    testBank = ['bedroom', 'entertainment', 'computer', 'fish', 'anticipate',]
+    hints()
+
+    newWord()
 
 })
 selectionDiv.addEventListener('click', function (e) {
@@ -65,14 +74,45 @@ selectionDiv.addEventListener('click', function (e) {
 
 })
 
+// checkBtn.addEventListener('click', function (e) {
+//     console.log('85 line does work')
+//     let hiddenLetters = document.querySelectorAll('li')
+//     for (k = 0; k > hiddenLetters.length; k++) {
+//         for (i = 0; i < wordBank.length; i++) {
+
+//         }
+
+
+//     }
+//     if (hiddenLetters[k] === wordBank[i]) {
+//         console.log('corrent kine 211')
+//     } else {
+
+//     }
+//     console.log(hiddenLetters[k], 'line 77')
+//     console.log(wordBank[k])
+//     console.log('next line after')
+// })
+
+
 newWordBtn.addEventListener('click', function (e) {
-    // blankLetters.remove()
+
     if (testBank.length) {
-        wordBank = testBank[0]
-        console.log(wordBank)
+        wordBank = testBank[Math.floor(Math.random() * testBank.length)];
+
+
         let savedWord = testBank.shift();
-        console.log(testBank, wordBank);
+
+        selectionDiv.disabled = false;
+        for (let i = 0; i < selectionDivChildren.length; i++) {
+            selectionDivChildren[i].disabled = false;
+        }
+        livesCounter = 6
+        rulesLine.textContent = `Rules: try to guess the word with limited tries you have only ${livesCounter} lives`;
+        gameOverScreen.remove()
+        youWinScreen.remove()
         newWord()
+        hints()
     }
 }
 )
@@ -96,8 +136,46 @@ function livesDropCount() {
         gameOverScreen.textContent = ' Game Over Please Reset'
         imgVarDiv.append(gameOverScreen)
 
-        console.log('gameOver')
+
     }
+}
+function hints() {
+    const currHint = document.querySelectorAll('h3');
+    for (let hint of currHint) {
+        hint.remove();
+    }
+    let hintText = document.createElement('h3')
+    if (wordBank === 'computer') {
+
+        hintText.textContent = 'hint: what you are using now'
+        // hintsDiv.append(hintText)
+    }
+    else if (wordBank === 'fish') {
+
+        hintText.textContent = 'hint: swims in the sea'
+        // hintsDiv.append(hintText)
+    }
+    else if (wordBank === 'entertainment') {
+
+        hintText.textContent = 'hint: helps pass the time'
+        // hintsDiv.append(hintText)
+    }
+    else if (wordBank === 'anticipate') {
+
+        hintText.textContent = 'hint: when you are waiting for something'
+        // hintsDiv.append(hintText)
+    }
+    else if (wordBank === 'bedroom') {
+
+        hintText.textContent = 'hint: what you sleep in'
+        // hintsDiv.append(hintText)
+    }
+    else if (wordBank === 'tea') {
+
+        hintText.textContent = 'hint: a drink that keeps you calm'
+        // hintsDiv.append(hintText)
+    }
+    hintsDiv.append(hintText)
 }
 
 
@@ -113,7 +191,7 @@ function newWord() {
         // node = document.createTextNode(blankLine)
         moreText.textContent = '_';
         moreText.setAttribute('class', 'hiddenLetter');
-        console.log('line 54')
+
         blankLetters.append(moreText);
         // moreText.appendChild(node)
         wordStorageDiv.append(blankLetters)
@@ -128,27 +206,34 @@ function check(userSelection) {
     let foundALetter = false
     let hiddenLetters = document.getElementsByClassName('hiddenLetter');
 
-
     for (i = 0; i < wordBank.length; i++) {
 
 
         console.log(wordBank[i], userSelection, 'line 158')
         if (wordBank[i].includes(userSelection)) {
             hiddenLetters[i].textContent = userSelection;
-
+            combinedHiddenLetters += hiddenLetters[i].textContent;
+            console.log(combinedHiddenLetters, wordBank, 'line 211');
+            combinedHiddenLetters === wordBank ? youWinScreen.textContent = 'you have won' : console.log('keep guessing');
+            imgVarDiv.append(youWinScreen)
+            // console.log(combinedHiddenLetters)
             foundALetter = true
-            console.log('match')
+
+
+
+
 
         }
         else {
 
-            console.log('no match found')
+
         }
 
 
     }
     if (foundALetter) {
-        console.log('add 1')
+
+
     }
     else {
         livesDropCount()
@@ -156,7 +241,12 @@ function check(userSelection) {
         // rulesLine.textContent = `Rules: try to guess the word with limited tries you have only ${livesCounter} lives`;
         // console.log(livesCounter)
     }
+
+
 }
+
+
+
 
 window.onload = () => {
     newWord();
