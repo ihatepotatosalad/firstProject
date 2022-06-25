@@ -33,14 +33,18 @@ rulesLine.textContent = `Rules: try to guess the word with limited tries you hav
 let selectionDiv = document.getElementById('buttonDiv')
 let wordStorageDiv = document.getElementById('wordStore')
 let letterStorageList = document.getElementsByClassName('letterStore')
-
+let resetBtn = document.getElementById('resetButton')
 let blankLetters = document.createElement('ul');
 
 //word bank declarations//
 let wordBank = 'bigwords'
 const letterArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 //this function will cycle through the word to check the letters to check for a match
+resetBtn.addEventListener('click', function (e) {
 
+    livesCounter = 6
+    rulesLine.textContent = `Rules: try to guess the word with limited tries you have only ${livesCounter} lives`;
+})
 selectionDiv.addEventListener('click', function (e) {
     check(e.target.id);
     // console.log(e.target.id);
@@ -58,6 +62,10 @@ function livesDropCount() {
     } else {
 
         rulesLine.textContent = `Rules: try to guess the word with limited tries you have only ${livesCounter} lives`;
+    }
+    if (livesCounter === 0) {
+        livesCounter++
+        console.log('gameOver')
     }
 }
 
