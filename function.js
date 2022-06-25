@@ -25,7 +25,8 @@ let wPick = document.getElementById('w')
 let xPick = document.getElementById('x')
 let yPick = document.getElementById('y')
 let zPick = document.getElementById('z')
-
+let gameOverScreen = document.createElement('h1')
+let imgVarDiv = document.getElementById('imgDiv')
 let counter = 0
 let rulesLine = document.getElementById('rules')
 let livesCounter = 6
@@ -41,7 +42,7 @@ let newWordBtn = document.getElementById('nextWord')
 
 //word bank declarations//
 let wordBank = 'bigwords'
-let testBank = ['largeWord', 'smallword', 'mediumword']
+let testBank = ['bedroom', 'entertainment', 'computer', 'fish', 'anticipate']
 let currentWord = []
 const letterArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 //this function will cycle through the word to check the letters to check for a match
@@ -52,6 +53,10 @@ resetBtn.addEventListener('click', function (e) {
     }
     livesCounter = 6
     rulesLine.textContent = `Rules: try to guess the word with limited tries you have only ${livesCounter} lives`;
+    gameOverScreen.remove()
+    wordBank = 'bigwords'
+    testBank = ['bedroom', 'entertainment', 'computer', 'fish', 'anticipate']
+
 })
 selectionDiv.addEventListener('click', function (e) {
     check(e.target.id);
@@ -61,17 +66,14 @@ selectionDiv.addEventListener('click', function (e) {
 })
 
 newWordBtn.addEventListener('click', function (e) {
-
-    currentWord[0] = testBank[0]
-    console.log(currentWord)
-    wordBank = testBank.shift();
-    console.log(testBank, wordBank);
-    if (blankLetters.createElement = true) {
-        blankLetters.remove()
-
-
+    // blankLetters.remove()
+    if (testBank.length) {
+        wordBank = testBank[0]
+        console.log(wordBank)
+        let savedWord = testBank.shift();
+        console.log(testBank, wordBank);
+        newWord()
     }
-    newWord()
 }
 )
 function getUserChoice(e) {
@@ -91,6 +93,9 @@ function livesDropCount() {
         for (let i = 0; i < selectionDivChildren.length; i++) {
             selectionDivChildren[i].disabled = true;
         }
+        gameOverScreen.textContent = ' Game Over Please Reset'
+        imgVarDiv.append(gameOverScreen)
+
         console.log('gameOver')
     }
 }
@@ -98,6 +103,10 @@ function livesDropCount() {
 
 function newWord() {
 
+    const currLetters = document.querySelectorAll('li');
+    for (let letter of currLetters) {
+        letter.remove();
+    }
     for (i = 0; i < wordBank.length; i++) {
 
         let moreText = document.createElement('li')
@@ -113,6 +122,7 @@ function newWord() {
     }
 
 }
+
 //this function checks to see if the selected letter matches the letter in the array of the word using a for function
 function check(userSelection) {
     let foundALetter = false
@@ -148,4 +158,6 @@ function check(userSelection) {
     }
 }
 
-newWord()
+window.onload = () => {
+    newWord();
+}

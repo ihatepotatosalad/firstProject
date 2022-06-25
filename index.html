@@ -2,6 +2,19 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="style.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css"
+        integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script> -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,45 +25,46 @@
 <body>
     <h1>Hang Man</h1>
     <h2 id='rules'></h2>
-    <div>
+    <div id='imgDiv'>
         <img src='images/Hangman-6.png'>
     </div>
     <!-- this div is where the images will go along with the buttons that will activate the function alighed with the buttons the js associated with this file 
     is what allows it to work -->
     <div id='buttonDiv'>
-        <button id='a' class='letterSelection' name='a' data-selection="a">a</button>
-        <button id='b' class='letterSelection' name='b' data-selection="b">b</button>
-        <button id='c' class='letterSelection' data-selection="c">c</button>
-        <button id='d' class='letterSelection' data-selection="d">d</button>
-        <button id='e' class='letterSelection' data-selection="e">e</button>
-        <button id='f' class='letterSelection' data-selection="f">f</button>
-        <button id='g' class='letterSelection' data-selection="g">g</button>
-        <button id='h' class='letterSelection' data-selection="h">h</button>
-        <button id='i' class='letterSelection' data-selection="i">i</button>
-        <button id='j' class='letterSelection' data-selection="j">j</button>
-        <button id='k' class='letterSelection' data-selection="k">k</button>
-        <button id='l' class='letterSelection' data-selection="l">l</button>
-        <button id='m' class='letterSelection' data-selection="m">m</button>
-        <button id='n' class='letterSelection' data-selection="n">n</button>
-        <button id='o' class='letterSelection' data-selection="o">o</button>
-        <button id='p' class='letterSelection' data-selection="p">p</button>
-        <button id='q' class='letterSelection' data-selection="q">q</button>
-        <button id='r' class='letterSelection' data-selection="r">r</button>
-        <button id='s' class='letterSelection' data-selection="s">s</button>
-        <button id='t' class='letterSelection' data-selection="t">t</button>
-        <button id='u' class='letterSelection' data-selection="u">u</button>
-        <button id='v' class='letterSelection' data-selection="v">v</button>
-        <button id='w' class='letterSelection' data-selection="w">w</button>
-        <button id='x' class='letterSelection' data-selection="x">x</button>
-        <button id='y' class='letterSelection' data-selection="y">y</button>
-        <button id='z' class='letterSelection' data-selection="z">z</button>
+        <button id='a' class="btn btn-default" name='a' data-selection="a">a</button>
+        <button id='b' class="btn btn-default" name='b' data-selection="b">b</button>
+        <button id='c' class="btn btn-default" data-selection="c">c</button>
+        <button id='d' class="btn btn-default" data-selection="d">d</button>
+        <button id='e' class="btn btn-default" data-selection="e">e</button>
+        <button id='f' class="btn btn-default" data-selection="f">f</button>
+        <button id='g' class="btn btn-default" data-selection="g">g</button>
+        <button id='h' class="btn btn-default" data-selection="h">h</button>
+        <button id='i' class="btn btn-default" data-selection="i">i</button>
+        <button id='j' class="btn btn-default" data-selection="j">j</button>
+        <button id='k' class="btn btn-default" data-selection="k">k</button>
+        <button id='l' class="btn btn-default" data-selection="l">l</button>
+        <button id='m' class="btn btn-default" data-selection="m">m</button>
+        <button id='n' class="btn btn-default" data-selection="n">n</button>
+        <button id='o' class="btn btn-default" data-selection="o">o</button>
+        <button id='p' class="btn btn-default" data-selection="p">p</button>
+        <button id='q' class="btn btn-default" data-selection="q">q</button>
+        <button id='r' class="btn btn-default" data-selection="r">r</button>
+        <button id='s' class="btn btn-default" data-selection="s">s</button>
+        <button id='t' class="btn btn-default" data-selection="t">t</button>
+        <button id='u' class="btn btn-default" data-selection="u">u</button>
+        <button id='v' class="btn btn-default" data-selection="v">v</button>
+        <button id='w' class="btn btn-default" data-selection="w">w</button>
+        <button id='x' class="btn btn-default" data-selection="x">x</button>
+        <button id='y' class="btn btn-default" data-selection="y">y</button>
+        <button id='z' class="btn btn-default" data-selection="z">z</button>
     </div>
     <div id='wordStore'>
 
 
     </div>
-    <button id='resetButton'>Reset</button>
-    <button id='nextWord'>New Word</button>
+    <button id='resetButton' class="btn btn-default">Reset</button>
+    <button id='nextWord' class="btn btn-default">New Word</button>
+
 
 </body>
 
