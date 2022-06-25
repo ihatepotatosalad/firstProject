@@ -25,6 +25,7 @@ let wPick = document.getElementById('w')
 let xPick = document.getElementById('x')
 let yPick = document.getElementById('y')
 let zPick = document.getElementById('z')
+
 let counter = 0
 let rulesLine = document.getElementById('rules')
 let livesCounter = 6
@@ -35,9 +36,12 @@ let wordStorageDiv = document.getElementById('wordStore')
 let letterStorageList = document.getElementsByClassName('letterStore')
 let resetBtn = document.getElementById('resetButton')
 let blankLetters = document.createElement('ul');
+let newWordBtn = document.getElementById('nextWord')
 
 //word bank declarations//
 let wordBank = 'bigwords'
+let testBank = ['largeWord', 'smallword', 'mediumword']
+let currentWord = []
 const letterArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 //this function will cycle through the word to check the letters to check for a match
 resetBtn.addEventListener('click', function (e) {
@@ -52,6 +56,12 @@ selectionDiv.addEventListener('click', function (e) {
 
 })
 
+newWordBtn.addEventListener('click', function (e) {
+
+    currentWord = testBank[0]
+    console.log(currentWord)
+}
+)
 function getUserChoice(e) {
 
 }
@@ -64,6 +74,9 @@ function livesDropCount() {
         rulesLine.textContent = `Rules: try to guess the word with limited tries you have only ${livesCounter} lives`;
     }
     if (livesCounter === 0) {
+
+
+
         livesCounter++
         console.log('gameOver')
     }
