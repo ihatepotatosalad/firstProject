@@ -32,6 +32,7 @@ let livesCounter = 6
 rulesLine.textContent = `Rules: try to guess the word with limited tries you have only ${livesCounter} lives`;
 // let node = document.createTextNode('_')
 let selectionDiv = document.getElementById('buttonDiv')
+const selectionDivChildren = selectionDiv.getElementsByTagName('button');
 let wordStorageDiv = document.getElementById('wordStore')
 let letterStorageList = document.getElementsByClassName('letterStore')
 let resetBtn = document.getElementById('resetButton')
@@ -45,7 +46,10 @@ let currentWord = []
 const letterArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 //this function will cycle through the word to check the letters to check for a match
 resetBtn.addEventListener('click', function (e) {
-
+    selectionDiv.disabled = false;
+    for (let i = 0; i < selectionDivChildren.length; i++) {
+        selectionDivChildren[i].disabled = false;
+    }
     livesCounter = 6
     rulesLine.textContent = `Rules: try to guess the word with limited tries you have only ${livesCounter} lives`;
 })
@@ -58,26 +62,35 @@ selectionDiv.addEventListener('click', function (e) {
 
 newWordBtn.addEventListener('click', function (e) {
 
-    currentWord = testBank[0]
+    currentWord[0] = testBank[0]
     console.log(currentWord)
+    wordBank = testBank.shift();
+    console.log(testBank, wordBank);
+    if (blankLetters.createElement = true) {
+        blankLetters.remove()
+
+
+    }
+    newWord()
 }
 )
 function getUserChoice(e) {
 
 }
 function livesDropCount() {
-    if (counter--) {
-        livesCounter--
+    if (livesCounter > 0) {
+        livesCounter--;
         rulesLine.textContent = `Rules: try to guess the word with limited tries you have only ${livesCounter} lives`;
-    } else {
 
-        rulesLine.textContent = `Rules: try to guess the word with limited tries you have only ${livesCounter} lives`;
     }
-    if (livesCounter === 0) {
 
 
+    else if (!livesCounter) {
 
-        livesCounter++
+        selectionDiv.disabled = true;
+        for (let i = 0; i < selectionDivChildren.length; i++) {
+            selectionDivChildren[i].disabled = true;
+        }
         console.log('gameOver')
     }
 }
@@ -96,6 +109,7 @@ function newWord() {
         // moreText.appendChild(node)
         wordStorageDiv.append(blankLetters)
 
+
     }
 
 }
@@ -103,18 +117,15 @@ function newWord() {
 function check(userSelection) {
     let foundALetter = false
     let hiddenLetters = document.getElementsByClassName('hiddenLetter');
-    // console.log(hiddenLetters);
+
 
     for (i = 0; i < wordBank.length; i++) {
-        // for (j = 0; j < wordStorageDiv.length; j++) {
-        //     console.log('line 55 works')
-        // }
+
 
         console.log(wordBank[i], userSelection, 'line 158')
         if (wordBank[i].includes(userSelection)) {
             hiddenLetters[i].textContent = userSelection;
-            // node = wordBank[i]
-            // console.
+
             foundALetter = true
             console.log('match')
 
@@ -122,8 +133,6 @@ function check(userSelection) {
         else {
 
             console.log('no match found')
-
-
         }
 
 
@@ -133,7 +142,9 @@ function check(userSelection) {
     }
     else {
         livesDropCount()
-        counter--
+        // livesCounter--
+        // rulesLine.textContent = `Rules: try to guess the word with limited tries you have only ${livesCounter} lives`;
+        // console.log(livesCounter)
     }
 }
 
