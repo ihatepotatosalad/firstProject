@@ -60,8 +60,9 @@ resetBtn.addEventListener('click', function (e) {
     rulesLine.textContent = `Rules: try to guess the word with limited tries you have only ${livesCounter} lives`;
     youWinScreen.remove()
     gameOverScreen.remove()
-    wordBank = testBank[Math.floor(Math.random() * testBank.length)];
+
     testBank = ['bedroom', 'entertainment', 'computer', 'fish', 'anticipate',]
+    wordBank = testBank[Math.floor(Math.random() * testBank.length)];
     hints()
 
     newWord()
@@ -69,6 +70,7 @@ resetBtn.addEventListener('click', function (e) {
 })
 selectionDiv.addEventListener('click', function (e) {
     check(e.target.id);
+    e.target.disabled = true
     // console.log(e.target.id);
     // livesDropCount()
 
@@ -109,10 +111,12 @@ newWordBtn.addEventListener('click', function (e) {
         }
         livesCounter = 6
         rulesLine.textContent = `Rules: try to guess the word with limited tries you have only ${livesCounter} lives`;
+        combinedHiddenLetters = ''
         gameOverScreen.remove()
         youWinScreen.remove()
         newWord()
         hints()
+
     }
 }
 )
@@ -214,8 +218,20 @@ function check(userSelection) {
             hiddenLetters[i].textContent = userSelection;
             combinedHiddenLetters += hiddenLetters[i].textContent;
             console.log(combinedHiddenLetters, wordBank, 'line 211');
-            combinedHiddenLetters === wordBank ? youWinScreen.textContent = 'you have won' : console.log('keep guessing');
-            imgVarDiv.append(youWinScreen)
+            if (combinedHiddenLetters === wordBank) {
+                youWinScreen.textContent = 'you have won'
+                console.log('hello form line 224')
+                selectionDiv.disabled = true;
+                for (let x = 0; x < selectionDivChildren.length; x++) {
+                    selectionDivChildren[x].disabled = true;
+
+                }
+                imgVarDiv.append(youWinScreen)
+            } else {
+                console.log('keep guessing')
+            }
+            // combinedHiddenLetters === wordBank ? (,conso) : ;
+
             // console.log(combinedHiddenLetters)
             foundALetter = true
 
