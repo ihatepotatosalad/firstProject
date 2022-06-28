@@ -1,3 +1,8 @@
 .letterSelection {
     word-wrap: normal;
 }
+
+#imgDiv {
+    height: auto;
+    width: auto;
+}
