@@ -26,7 +26,14 @@ let xPick = document.getElementById('x')
 let yPick = document.getElementById('y')
 let zPick = document.getElementById('z')
 let combinedHiddenLetters = '';
-
+//declaration for the hangman parts
+let headP = document.getElementById('headpiece')
+let leftLegP = document.getElementById('leftLeg')
+let rightLegP = document.getElementById('rightLeg')
+let leftArmP = document.getElementById('leftArm')
+let rightArmP = document.getElementById('rightArm')
+let bodyP = document.getElementById('bodyPiece')
+// more delcarations
 let checkBtn = document.getElementById('checkWord')
 let hintsDiv = document.getElementById('hints')
 let gameOverScreen = document.createElement('h1')
@@ -66,6 +73,12 @@ resetBtn.addEventListener('click', function (e) {
     hints()
 
     newWord()
+    headP.style.opacity = 0
+    bodyP.style.opacity = 0
+    leftArmP.style.opacity = 0
+    leftLegP.style.opacity = 0
+    rightArmP.style.opacity = 0
+    rightLegP.style.opacity = 0
 
 })
 selectionDiv.addEventListener('click', function (e) {
@@ -116,6 +129,12 @@ newWordBtn.addEventListener('click', function (e) {
         youWinScreen.remove()
         newWord()
         hints()
+        headP.style.opacity = 0
+        bodyP.style.opacity = 0
+        leftArmP.style.opacity = 0
+        leftLegP.style.opacity = 0
+        rightArmP.style.opacity = 0
+        rightLegP.style.opacity = 0
 
     }
 }
@@ -127,6 +146,25 @@ function livesDropCount() {
     if (livesCounter > 0) {
         livesCounter--;
         rulesLine.textContent = `Rules: try to guess the word with limited tries you have only ${livesCounter} lives`;
+        if (livesCounter === 5) {
+            headP.style.opacity = 100
+        }
+        if (livesCounter === 4) {
+            bodyP.style.opacity = 100
+        }
+        if (livesCounter === 3) {
+            leftArmP.style.opacity = 100
+        }
+        if (livesCounter === 2) {
+            rightArmP.style.opacity = 100
+        }
+        if (livesCounter === 1) {
+            leftLegP.style.opacity = 100
+        }
+        if (livesCounter === 0) {
+            rightLegP.style.opacity = 100
+        }
+
 
     }
 
