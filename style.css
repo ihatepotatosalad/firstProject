@@ -4,8 +4,60 @@
 
 /* #imgDiv {} */
 
-img {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain;
+
+
+#headpiece {
+    position: relative;
+    opacity: 0;
+    left: -810px;
+    top: 30px;
+}
+
+#bodyPiece {
+    opacity: 0;
+    position: relative;
+    height: 100px;
+    width: 100px;
+    left: -1227px;
+    top: -22px;
+}
+
+#leftArm {
+    position: relative;
+    opacity: 0;
+    height: 100px;
+    width: 100px;
+    left: -1339px;
+    top: -11px;
+
+}
+
+#rightArm {
+    position: relative;
+    opacity: 0;
+    height: 100px;
+    width: 100px;
+    left: -1420px;
+    top: -11px;
+
+}
+
+#rightLeg {
+    opacity: 0;
+    position: relative;
+    height: 100px;
+    width: 100px;
+    left: -1628px;
+    top: 40px;
+
+}
+
+#leftLeg {
+    opacity: 0;
+    position: relative;
+    height: 100px;
+    width: 100px;
+    left: -1546px;
+    top: 36px;
+
 }
