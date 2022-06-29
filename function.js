@@ -54,10 +54,10 @@ let newWordBtn = document.getElementById('nextWord')
 
 //word bank declarations//
 let wordBank = 'tea'
-let testBank = ['bedroom', 'entertainment', 'computer', 'fish', 'anticipate']
+let testBank = ['bedroom', 'entertainment', 'computer', 'fish', 'anticipate', 'peanut', 'mouse', 'table', 'chess', 'shoes', 'door']
 let currentWord = []
 const letterArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-//this function will cycle through the word to check the letters to check for a match
+//this function does basically the same thing as the new word buttton
 resetBtn.addEventListener('click', function (e) {
     selectionDiv.disabled = false;
     for (let i = 0; i < selectionDivChildren.length; i++) {
@@ -68,7 +68,7 @@ resetBtn.addEventListener('click', function (e) {
     youWinScreen.remove()
     gameOverScreen.remove()
 
-    testBank = ['bedroom', 'entertainment', 'computer', 'fish', 'anticipate',]
+    testBank = ['bedroom', 'entertainment', 'computer', 'fish', 'anticipate', 'peanut', 'mouse', 'table', 'chess', 'shoes', 'door']
     wordBank = testBank[Math.floor(Math.random() * testBank.length)];
     hints()
 
@@ -81,6 +81,7 @@ resetBtn.addEventListener('click', function (e) {
     rightLegP.style.opacity = 0
 
 })
+//this allows the buttons to be pressed and selects the id from the button clicked ie if a is clicked i gave the id for a =a
 selectionDiv.addEventListener('click', function (e) {
     check(e.target.id);
     e.target.disabled = true
@@ -89,27 +90,10 @@ selectionDiv.addEventListener('click', function (e) {
 
 })
 
-// checkBtn.addEventListener('click', function (e) {
-//     console.log('85 line does work')
-//     let hiddenLetters = document.querySelectorAll('li')
-//     for (k = 0; k > hiddenLetters.length; k++) {
-//         for (i = 0; i < wordBank.length; i++) {
-
-//         }
 
 
-//     }
-//     if (hiddenLetters[k] === wordBank[i]) {
-//         console.log('corrent kine 211')
-//     } else {
-
-//     }
-//     console.log(hiddenLetters[k], 'line 77')
-//     console.log(wordBank[k])
-//     console.log('next line after')
-// })
-
-
+//the purpose of this function is to commect to the new word button which will reset the lives counter back to default of 6 remove game over and you win screen
+//it also resets the opacity of the stick man figure it uses math.random to randomly generate words form the bank
 newWordBtn.addEventListener('click', function (e) {
 
     if (testBank.length) {
@@ -142,6 +126,7 @@ newWordBtn.addEventListener('click', function (e) {
 function getUserChoice(e) {
 
 }
+//this function controls the lives drop it also allows the lives counter to not go below 0 while also increasing opacity when an answer is wrong
 function livesDropCount() {
     if (livesCounter > 0) {
         livesCounter--;
@@ -181,6 +166,7 @@ function livesDropCount() {
 
     }
 }
+// this is where the hints are given it uses if statements to check what the word is in the bank so that it can find the most apporipiate hint to match it
 function hints() {
     const currHint = document.querySelectorAll('h3');
     for (let hint of currHint) {
@@ -217,6 +203,37 @@ function hints() {
         hintText.textContent = 'hint: a drink that keeps you calm'
         // hintsDiv.append(hintText)
     }
+    else if (wordBank === 'peanut') {
+
+        hintText.textContent = 'hint: a nut that is a healthy snack'
+
+    }
+    else if (wordBank === 'door') {
+
+        hintText.textContent = 'hint: allows you to enter your room'
+
+    }
+    else if (wordBank === 'mouse') {
+
+        hintText.textContent = 'hint: another word for rat'
+
+    }
+    else if (wordBank === 'table') {
+
+        hintText.textContent = 'hint: what you eat on'
+
+    }
+    else if (wordBank === 'chess') {
+
+        hintText.textContent = 'hint: a complicated game with 64 squares'
+
+    }
+    else if (wordBank === 'shoes') {
+
+        hintText.textContent = 'hint: what you wear on your feet'
+
+    }
+
     hintsDiv.append(hintText)
 }
 
@@ -243,7 +260,7 @@ function newWord() {
 
 }
 
-//this function checks to see if the selected letter matches the letter in the array of the word using a for function
+//this function checks to see if the selected letter matches letter hidden in the background when ever a button is clicked it will disable that button to prevent the user form selecting a valie more than once
 function check(userSelection) {
     let foundALetter = false
     let hiddenLetters = document.getElementsByClassName('hiddenLetter');
@@ -303,5 +320,6 @@ function check(userSelection) {
 
 
 window.onload = () => {
+    hints()
     newWord();
 }
